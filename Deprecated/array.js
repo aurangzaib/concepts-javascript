@@ -126,64 +126,6 @@
         }
         console.log(myArray[3][3]); // 9
     }
-    // implementing by forEach, what i think
-    {
-        myArray.forEach(function(myArrayRow, rowIndex) {
-            value.forEach(function(myArrayRowCol, colIndex) {
-                myArrayRowCol = rowIndex * colIndex;
-            })
-        });
-        // myArrayRow is myArray[rowIndex]
-        // myArrayCol is myArray[colIndex]
-        // myArrayRowCol is myArray[rowIndex][colIndex]
-        // rowIndex is row
-        // colIndex is col
-    }
-    // implementing by for/in, what i think
-    // note : for/in should be used with array
-    // for/in is for object property iteration
-    //
-    // http://stackoverflow.com/questions/500504/javascript-for-in-with-arrays
-    {
-        for(a in myArray) {
-            for(b in myArray[a]) {
-                myArray[a][b] = a * b;
-            }
-        }
-    }
-}
-/// Array.sort ( )
-{
-    // when no comparefunction is provided, it sorts alphabatically
-    // when comparefunction is provided :
-    //  for -ve, sorts a before b
-    //  for 0 , no sorting
-    //  for +ve, sorts b before a
-
-    function comparefunction(a, b) {
-        return a - b; // sorts in ascending order
-        //
-        // returns -ve if a is smaller or vice verse
-        // so if a is smaller, return will be -ve and
-        //'a' will be placed b/f 'b'
-        // return b-a ; // sorts in descending order
-    }
-
-    function myFunc() {
-        var numberArray = [1, 77, 2, 4];
-        var stringArray = ["google", "apple", "microsoft", "samsung"];
-        var mixArray = ["77", "1", "banana", "apple"];
-        var mixNumArray = ["1", 55, "23", 88];
-
-        numberArray.sort(); // sorted alphabetically
-        numberArray.sort(comparefunction); // 1, 2, 4, 77
-        stringArray.sort(); // sorted alphabetically
-        stringArray.sort(comparefunction); // no effect
-        mixArray.sort(); // sorted alphabetically
-        mixArray.sort(comparefunction); // 1, 77, banana, apple
-        mixNumArray.sort(); // sorted alphabetically
-        mixNumArray.sort(comparefunction); // 1, 23, 55, 88
-    }
 }
 
 /// Array.concat( )
@@ -201,122 +143,6 @@
     // returns [ "chrome", 1, 10 ]
 }
 
-/// Array.slice ( )
-{
-    // creates subArray WITHOUT effecting orig array
-    // first arg shows starting point referenced from 0
-    // second arg shows # of element. NOT element #
-    // -ve arg counts from end
-    //
-    var a = [1, 4, 5, 6, 8, 3, 6, 3];
-    a.slice(0, 4);
-    // returns [ 1, 4, 5, 6 ]
-    a.slice(5);
-    // returns [ 3,6,3 ] from original
-    a.slice(-3);
-    // returns [ 3,6,3 ] from original
-    a.slice();
-    // returns whole array
-}
-
-/// Array.splice( )
-{
-    //
-    // cuts out the segment or inserts elements, IT EFFECTS THE ORIGINAL ARRAY
-    // it can have multiple arguments :
-    // when only two arg, it deletes from 1st to (2nd-1) arg, starting from 0
-    // when multiple arg, it adds a/f 1st arg and removes # of 2nd arg
-    // and other arg are elements to be added
-    // Syntax :
-    // splice ( startpoint_toDel, #ofelements_toDel ) ;
-    // splice ( point_toAdd/del, #ofelements_toDel, what_Add ) ;
-    //
-    var a = [1, 2, 3, 4, 5];
-    a.splice(0, 1); // deletes element 0
-    // returns [ 1 ]
-    // a = [ 2, 3, 4, 5 ]
-    a.splice(-2); // deletes last 2 elements
-    // returns [ 4, 5 ]
-    // a = [ 2, 3 ]
-    var a = [1, 2, 3];
-    a.splice(0, 0, 'a'); // adds 'a' at 0th index, del nothing
-    // returns [ ]
-    // a = [ 'a' , 1, 2, 3 ]
-    a.splice(3, 0, 'b', 'c');
-    // returns []
-    // a = [ 'a' , 1, 2, 'b' , 'c', 3 ]
-    a.splice(3, 0, ['e', 'f']);
-    // returns []
-    // a = [ 'a' , 1, 2, [ 'e','f' ], 'b' , 'c', 3 ]
-    a.splice(0, 5, 'k', 'l'); // 5 is the # of elements to del from left side
-    // returns [ 'a', 1, 2, ['e', 'f'], 'b' ]
-    // a = [ 'k', 'l' , 'c', 3 ]
-    a.splice(0, 1, 'chrome');
-    // returns ['k']
-    // a = [ 'chrome', 'l', 'c', 3 ]
-    // to replace element: splice( 0, 1, value )
-}
-
-/// push & pop
-{
-    //
-    // push inserts to the last and increases array length
-    // pop extracts from last and 'decrease array length'
-    // these are unlike delete( ) which just removes element
-    // value but doesnt reduce length, making array sparsed
-    //
-    var a = [];
-    // a = undefined
-    a[0] = 1; // a = [ 1 ]
-    a[1] = 2; // a = [ 1,2 ]
-    a.push("3"); // a = [ 1,2,3 ]  // pushing from the end
-    a.push("4", "5"); // a = [ 1,2,3,4,5 ]
-    a.unshift("0"); // a = [ 0,1,2,3,4,5 ] // pushing from beginning
-    delete a[0, 2]; // a = [ , 1, , 3, 4, 5 ] // sparse-array // returns nothing
-    a = [1, 2, 3, 4, 5]; // define a again
-    a.pull(); // a = [ 1, 2, 3, 4, ] //  removes elem from end but also returns its
-    a.shift(); // a = [ , 2, 3, 4,  ] //  removes elem from start but also returns its
-    var stack = [];
-    stack.push(2, 4);
-    // stack = [ 2, 4 ]
-    // returns [  ]
-    stack.pop();
-    // stack = [ 2 ]
-    // returns [ 4 ]
-    stack.push([3, 3]);
-    // stack = [ 2, 4, [3,3] ]
-    // returns [ ]
-    stack.pop();
-    // stack = [ 2, 4 ]
-    // returns [ [3, 3] ]
-    stack.pop(stack.pop());
-    // stack = [ ]
-    // returns [ 2, 4 ]
-}
-
-/// unshift & shift
-{
-    var stack = [];
-    stack.unshift(1);
-    // stack = [ 1 ]
-    // returns [ ]
-    stack.unshift(1, [3, 4], 4);
-    // stack = [ 1, 1, [3, 4], 4 ]
-    // returns [ ]
-    stack.shift(stack.shift());
-    // stack = [ [3,4],4 ]
-    // returns [1,1]
-    // toString ( ) :
-    var a = [2, [3, '3']];
-    a.toString(); // similar to join( )
-    // returns 2, 3, '3'
-    // no braces or delimiters are included in o/p
-    {
-        // always use braces around single line loop
-        // always use Object.create( ) for object creation
-        // explicitly use ';' wherever req., dont leave it for language to correct
-    }
-}
 
 /// ECMA5 methods :
 {
@@ -345,8 +171,7 @@
                     throw e;
                 }
             }
-            foreach.
-            break = new Error("program is fucked");
+            foreach.break = new Error("program is fucked");
         }
     }
 

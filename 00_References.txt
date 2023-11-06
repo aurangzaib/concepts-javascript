@@ -1,0 +1,22 @@
+=============================================================================================================
+Libraries
+=============================================================================================================
+
+- jQuery: For manipulating the DOM [ http:jquery.com ]
+- Dojo: framework [ http:dojotoolkit.org/ ]
+- d3: like jQuery for SVG elements [  http:d3js.org/ ]
+- Processing.js: for manipulating canvas elements [ http:processingjs.org ]
+- Backbone.js: for managing client-side data structures [ http:backbonejs.org ]
+- Underscore.js: powerful functional programming ideas [ http:underscorejs.org ]
+- Twitter Bootstrap: accelerates UI styling and events [ http:twitter.github.com/bootstrap ]
+- Modernizr: browser feature detection  [ http:modernizr.com ]
+- MathJax: Latex math formulas in the browser [ http:www.mathjax.org ]
+- HTML5 Boilerplate: Industry-stand startpoint for HTML5 sites [ http:html5boilerplate.com/ ]
+- MooTools: Object oriented framework similar to jQuery [ http:mootools.net/ ]
+- Prototype: framework [ http:prototypejs.org/ ]
+- YUI: Framework for building interactive web app [ http:yuilibrary.com/ ]
+- three.js: 3D rendering library using WebGL [ http:mrdoob.github.com/three.js/ ]
+- Normalize.css: make elem look same across browsers [ http:necolas.github.com/normalize.css/ ]
+- MetroUICSS : great css based windows metro layouts [ http:metroui.org.ua/ ]
+- Less : The dynamic stylesheet language [ http:lesscss.org/ ]
+
