@@ -1,4 +1,10 @@
 =============================================================================================================
+Learning Resources
+=============================================================================================================
+
+https://javascript.info/
+
+=============================================================================================================
 Libraries
 =============================================================================================================
 
@@ -19,4 +25,4 @@ Libraries
 - Normalize.css: make elem look same across browsers [ http:necolas.github.com/normalize.css/ ]
 - MetroUICSS : great css based windows metro layouts [ http:metroui.org.ua/ ]
 - Less : The dynamic stylesheet language [ http:lesscss.org/ ]
-
+- Lodash: https://lodash.com/

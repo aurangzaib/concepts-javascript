@@ -1,10 +1,26 @@
+/*
+
+ Description:
+ Basic
+ 
+ Modifications:
+ ---------------------------------------------------------------------------------------
+ Date      Vers.  Comment                                                     Name
+ ---------------------------------------------------------------------------------------
+ 21.07.13  01.00  Created												      Siddiqui
+ 06.11.23  02.00  Updated                                                     Siddiqui
+ ---------------------------------------------------------------------------------------
+
+*/
+
 // ==========================================================================================================
 // Notes
 // ==========================================================================================================
 /*
+
 - Primtive Type: Number, Bool, Null
 - Object Type: Object, Array, Function
-- In Javascript, int and float are same
+- In Javascript, int and float are same (Numbers)
 - Equality operators:
     ==  With implicit type conversion
     === Without implicit type conversion
@@ -15,41 +31,32 @@
 - Undefined:  System level, unintended absence of value
 - Null:       Program level, intended absence of value
 - Date: 0 based months and 1 based days
+- Javascript has automatic garbage collection (https://javascript.info/garbage-collection)
+
 */
 
-// ==========================================================================================================
-// Strings
-// ==========================================================================================================
+"use strict"
 
-// Strings are not object, they are primitive with properties.
-// When we access any of string properties, a temp object is created to...
-// ... resolve property-reference. After that, wrapper object is discarded
-
-var s = "hello";
-s.len = 4;      // wrapper object will be created
-var t = s.len;
-console.log(t); // undefined, strings are primitive;changes done on wrap obj
+let a = 12;
 
 // ==========================================================================================================
-// With
+// Print
 // ==========================================================================================================
-// Note: With is deprecated in ES5
-var a = {
-    b: {
-        c: 1
-    }
-};
-// Without with statement
-a.b.c = 11;
-// With with statment
-with (a.b) {
-    console.log(c);
-}
+console.log('Hello');
+console.log(`${a}`);
+console.log(a);
+
+// ==========================================================================================================
+// Type
+// ==========================================================================================================
+
+let variable1 = { 'x': 1 };
+typeof (variable1);
 
 // ==========================================================================================================
 // Throw Error
 // ==========================================================================================================
-var a = 12;
+
 if (a > 12) {
     throw new Error("Value greater than 10");
 }
@@ -57,8 +64,9 @@ if (a > 12) {
 // ==========================================================================================================
 // Exception Handling
 // ==========================================================================================================
+
 try {
-    var a = 11;
+    let a = 11;
 }
 catch (exception) {
     console.log(exception);
@@ -70,12 +78,43 @@ finally {
 // ==========================================================================================================
 // Object
 // ==========================================================================================================
-var obj = {
-    'x': 1,
-    'y': 2,
-    'z': 3
+
+// ----------------------------------------------------
+// Creation
+// ----------------------------------------------------
+
+// Symbol for private property
+let id = Symbol();
+// Object
+let obj = {
+    // Public Properties
+    x: 1, y: 2, z: 3,
+    // Private Properties (using symbols)
+    [id]: 11
 };
-console.log(obj.y);
-for (var key in obj) {
-    console.log(key);
-}
+
+// ----------------------------------------------------
+// Copy
+// ----------------------------------------------------
+
+let obj1 = obj                                  // Referece
+let obj2 = Object.assign(obj);                  // Reference 
+let obj3 = structuredClone(obj);                // Copy (It doesn't work with methods)
+
+// ----------------------------------------------------
+// Access
+// ----------------------------------------------------
+
+obj.y;                                          // Access
+obj.a?.b;                                       // Optional Chaining: Access only if exists
+if ('x' in obj) { }                             // Exists
+for (let key in obj) { console.log(key); }      // Iterate
+console.log(obj[id]);                           // Access private property
+
+// ----------------------------------------------------
+// Key, Value
+// ----------------------------------------------------
+
+Object.keys(obj);       // Key Array
+Object.values(obj);     // Value Array
+Object.entries(obj);    // Key, Value Array
