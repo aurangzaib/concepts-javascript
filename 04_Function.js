@@ -119,22 +119,6 @@ func = () => {
 func();
 
 // ==========================================================================================================
-// Constructor Function
-// ==========================================================================================================
-
-function User(key, standard) {
-    this.key = key;
-    this.standard = standard;
-    this.printer = () => {
-        console.log(this.key);
-        console.log(this.standard);
-    }
-}
-let user1 = new User(1, 2);
-let user2 = new User(11, 22);
-user1.printer();
-
-// ==========================================================================================================
 // Recursion
 // ==========================================================================================================
 
@@ -248,14 +232,12 @@ func(data1, data2, data3);
 // - A nested function returned from inside another function
 // - It has access to enclosing function scope even after enclosing function is terminated
 // - It is a data hiding mechanism
-
 func = () => {
     const a = 3, b = 4;
     return () => {
         return [a, b];
     }
 };
-
 let closure = func();
 let data = closure();
 console.log(...data);
