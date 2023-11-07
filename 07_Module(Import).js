@@ -12,7 +12,7 @@
 
 */
 
-import * as Imported from './06_Module(Export).js'  // Import with module scope
+import * as Imported from './07_Module(Export).js'  // Import with module scope
 
 let cls = new Imported.Cls(1, 2);
 cls.getter();
