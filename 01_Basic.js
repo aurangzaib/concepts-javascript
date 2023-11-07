@@ -32,7 +32,7 @@
 - Null:       Program level, intended absence of value
 - Date: 0 based months and 1 based days
 - Javascript has automatic garbage collection (https://javascript.info/garbage-collection)
-
+- Always use let/const instead of var (it creates a global variable)
 */
 
 "use strict"
