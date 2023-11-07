@@ -90,7 +90,7 @@ UserObject = {
     getter() {
         console.log(`(${this.key}, ${this.standard})`);
     }
-}
+};
 UserObject.setter(1, 2);
 UserObject.getter();
 
@@ -130,7 +130,7 @@ class UserClass {
         this.key = key;
         this.standard = standard;
     }
-    getter() {
+    getter = () => {
         console.log(`(${this.key}, ${this.standard})`);
     }
 };

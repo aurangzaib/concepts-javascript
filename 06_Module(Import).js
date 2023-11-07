@@ -12,5 +12,8 @@
 
 */
 
-import { func } from './06_Module(Export).js'
-func();
+import * as Imported from './06_Module(Export).js'  // Import with module scope
+
+let cls = new Imported.Cls(1, 2);
+cls.getter();
+console.log("With module scope: ", Imported.PI);

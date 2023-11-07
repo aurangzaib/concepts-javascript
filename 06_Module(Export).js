@@ -15,8 +15,26 @@
 // ==========================================================================================================
 // Link
 // ==========================================================================================================
-// - https://javascript.info/modules
+// - https://javascript.info/import-export
+// - https://javascript.info/modules-dynamic-imports
 
+// ==========================================================================================================
+// Module Export
+// ==========================================================================================================
+
+// Constant
+const PI = 3.14
+
+// Function
 const func = () => { console.log("Hello World"); }
-export { func }
+
+// Class
+class Cls {
+    constructor(a, b) { this.a = a; this.b = b; }
+    getter = () => {
+        let get = { a: this.a, b: this.b };
+        console.log(get); return get;
+    }
+}
+export { PI, Cls, func }
 
