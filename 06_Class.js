@@ -19,6 +19,7 @@
 
 // - https://www.javascripttutorial.net/javascript-factory-functions/
 // - https://dev.to/bchau/factory-functions-vs-constructors-500m
+// - https://javascript.info/mixins
 
 // ==========================================================================================================
 // Notes
@@ -47,7 +48,6 @@
 // ==========================================================================================================
 
 class Cls {
-
 
     // Default Constructor
     public_property = 0;            // Private Property
@@ -161,3 +161,7 @@ btn.getter();                           // Correct this
 setTimeout(btn.getter, 1000);           // Lost this
 setTimeout(() => btn.getter(), 1000);   // Correct this
 setTimeout(btn.getter2, 1000);          // Correct this
+
+// ==========================================================================================================
+// Mixins
+// ==========================================================================================================
