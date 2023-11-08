@@ -14,10 +14,16 @@
 */
 
 // ==========================================================================================================
-// Link
+// Definition
 // ==========================================================================================================
-// - https://www.javascripttutorial.net/javascript-factory-functions/
-// - https://dev.to/bchau/factory-functions-vs-constructors-500m
+
+let UserObject = {
+    key: 0,
+    setter(key) { this.key = key; },
+    getter() { console.log(`(${this.key}`) },
+    get key() { return this._key; },        // Note _key is read
+    set key(value) { this._key = value; }   // Note _key is written
+};
 
 // ==========================================================================================================
 // Prototypal Inheritance
