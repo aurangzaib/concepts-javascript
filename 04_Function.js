@@ -66,25 +66,25 @@ func(1, 2, 1000);
 // ----------------------------------------------------
 // End after T seconds
 // ----------------------------------------------------
-func = (a, b, t) => {
-    const id = setInterval(() => { console.log(a, b) });
+func = (a, t) => {
+    const id = setInterval(() => { console.log(a) });
     setTimeout(() => { clearInterval(id) }, t);
 }
-func(1, 2, 1000);
+func(1, 1000);
 
 // ----------------------------------------------------
 // Repeat Every T seconds for N Times
 // ----------------------------------------------------
-func = (a, b, t, n) => {
+func = (a, t, n) => {
     let counter = 0;
     // Set Repeater
     const id = setInterval(() => {
-        counter += 1; console.log(a, b);
+        counter += 1; console.log(a);
         // Reset Repeater
         if (counter >= n) { clearInterval(id); }
     }, t);
 }
-func(3, 4, 1000, 10);
+func(3, 1000, 10);
 
 // ----------------------------------------------------
 // Note
