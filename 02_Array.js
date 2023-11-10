@@ -23,8 +23,11 @@
 // ----------------------------------------------------
 // Create
 // ----------------------------------------------------
-let arr1 = [1, 2, 3, 4];
-let arr2 = new Array(1, 2, 3, 4);
+let arr1 = [1, 2, 3.2, "4"];
+let arr2 = new Array(1, 2, 3.2, "4");
+let arr3 = new Array(5);         // Sparse array of length=5
+let arr4 = [()=>console.log(1)]; // Function elements
+arr4[0]();
 
 // ----------------------------------------------------
 // Access
@@ -47,7 +50,7 @@ arr2.unshift();     // Add element at the start
 // ----------------------------------------------------
 // Slice
 // ----------------------------------------------------
-let arr3 = arr2.slice(1, 3);        // No change in array
+arr3 = arr2.slice(1, 3);        // No change in array
 
 // ----------------------------------------------------
 // Splice
@@ -67,7 +70,8 @@ arr3.length;
 // ----------------------------------------------------
 // Concat
 // ----------------------------------------------------
-let arr4 = arr3.concat(arr1);
+arr4 = arr3.concat(arr1);
+arr4 = arr4.concat(1, 2, 3);
 
 // ----------------------------------------------------
 // Iteration
@@ -122,6 +126,18 @@ let arr6 = arr4.filter(value => value % 2 === 0)
 let str1 = 'A, B, C';
 arr1 = str1.split(', ');
 let str2 = arr1.join(', ');
+
+// ----------------------------------------------------
+// Every and Some
+// ----------------------------------------------------
+let arr7 = [1, 0, 1, 0];
+arr7.every(value=>value===true);   // Each element must be true
+arr7.some(value=>value===true);    // Any element must be true
+
+// ----------------------------------------------------
+// Index of value
+// ----------------------------------------------------
+arr1.indexOf('A');
 
 return; // Debugger Point
 

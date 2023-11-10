@@ -10,25 +10,16 @@
 
 // - https://www.freecodecamp.org/news/guide-to-javascript-promises/
 // - https://javascript.info/async
-
-// ==========================================================================================================
-// Callback
-// ==========================================================================================================
-
-// ==========================================================================================================
-// Callback Hell
-// ==========================================================================================================
-
-// ==========================================================================================================
-// Promise
-// ==========================================================================================================
-// Promise States:
-// Pending
-// Fullfilled
-// Rejected
-
+// - Promise States:
+//      - Pending
+//      - Fullfilled
+//      - Rejected
+// These two are not same (http://disq.us/p/216gne4):
+// promise.then(fn1).catch(fn2)
+// promise.then(fn1, fn2)
+//
 // ----------------------------------------------------
-// Promise Definition
+// Promise Production (Definition)
 // ----------------------------------------------------
 
 // Fetch data from server
@@ -39,20 +30,23 @@ const send_request = () => {
         setTimeout(() => {
             const num = Math.random();
             // Server response successful
+            // Promise state: Fullfilled
             if (num > 0.5) {
                 resolve(num);
+                reject(num); // Ignored. Promise has only one result
             }
             // Server response error
+            // Promise state: Rejected
             else {
                 reject(num);
             }
-        // Server takes 2.5s to respond
+            // Server takes 2.5s to respond
         }, 2500);
     });
 };
 
 // ----------------------------------------------------
-// Promise Handling
+// Promise Consumption (Handling)
 // ----------------------------------------------------
 
 // Handle data fetched from server
@@ -65,6 +59,9 @@ const handle_response = () => {
     const final_function = () => { console.log("Cleanup"); }
     // Promise Handling
     promise.then(resolve_function).catch(reject_function).finally(final_function);
+    // Ignored: Promise can be consumed only one
+    promise.then(resolve_function); // Only handle success
+    promise.catch(reject_function); // Only handle error
 };
 
 // ----------------------------------------------------
@@ -91,3 +88,4 @@ const main = () => {
 };
 
 main();
+

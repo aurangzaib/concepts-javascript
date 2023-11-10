@@ -15,6 +15,66 @@
 'use strict';
 
 // ==========================================================================================================
+// Hoisting
+// ==========================================================================================================
+
+// Using a variable before it is declared
+// Only declaration is hoisted, not the initialization value
+func = () => {
+    console.log(child_var); // Hoisted value
+    var child_var;
+    child_var = 55;
+    console.log(child_var); // Initialized value
+}
+func();
+
+// ==========================================================================================================
+// Self Invocation Function
+// ==========================================================================================================
+
+const result = (() => {
+    let a = 2, b = 3;
+    return a + b;
+})();
+
+// ==========================================================================================================
+// Passing context
+// ==========================================================================================================
+
+const outer_function = (self) => {
+    console.log(self.prop);
+}
+
+const parent = {
+    prop: "Hello",
+    inner_function() {
+        let self = this;
+        outer_function(self);
+    }
+};
+
+parent.inner_function();
+
+// ==========================================================================================================
+// Argument Identifier
+// ==========================================================================================================
+// Note: Arrow functions have no argument identifier
+function some_function() {
+    console.log(arguments[1]);
+    console.log(arguments.length);
+}
+some_function(1, 2, 3);
+
+// ==========================================================================================================
+// Procedure - Function without return value
+// ==========================================================================================================
+
+const procedure = () => {
+    // Do some task
+    // No return value
+}
+
+// ==========================================================================================================
 // Arrow Functions
 // ==========================================================================================================
 
@@ -105,20 +165,6 @@ func = (a, b, ...other) => { // var is used to redefine func later, not possible
 func(1, 2, 3, 4, 5, 6);
 
 // ==========================================================================================================
-// Hoisting
-// ==========================================================================================================
-
-// Using a variable before it is declared
-// Only declaration is hoisted, not the initialization value
-func = () => {
-    console.log(child_var); // Hoisted value
-    var child_var;
-    child_var = 55;
-    console.log(child_var); // Initialized value
-}
-func();
-
-// ==========================================================================================================
 // Recursion
 // ==========================================================================================================
 
@@ -180,7 +226,7 @@ let data2 = [1, 2, 3];
 let data3 = 99
 
 // ----------------------------------------------------
-//  Apply (A = Array)
+//  Apply (A = Array) - Deprecated
 // ----------------------------------------------------
 function apply_fn() {
     console.log(this[0]);       // data 1
@@ -189,7 +235,7 @@ function apply_fn() {
 }
 
 // ----------------------------------------------------
-//  Call (C = Comma)
+//  Call (C = Comma) - Deprecated
 // ----------------------------------------------------
 function call_fn(...args) {
     console.log(this);          // data 1
@@ -229,15 +275,18 @@ func(data1, data2, data3);
 // Closure
 // ==========================================================================================================
 
-// - A nested function returned from inside another function
-// - It has access to enclosing function scope even after enclosing function is terminated
-// - It is a data hiding mechanism
-func = () => {
-    const a = 3, b = 4;
-    return () => {
-        return [a, b];
+// - Definition: Nested function has access to parent function scope even after parent function is terminated
+// - Reason:     Function gets the value where they are defined not where they are invoked
+// - Benefit:    It is a data hiding mechanism
+// - Note:       A parent function depending upon nested function value is not a closure
+function parent(outer_value) {
+    function child(inner_value) {
+        return outer_value + inner_value;
     }
-};
-let closure = func();
-let data = closure();
-console.log(...data);
+    return child;
+}
+
+const a = parent(1);
+const b = parent(2);
+console.log(a(2));
+console.log(b(2));
