@@ -103,14 +103,17 @@ console.log(Cls.static_method()); // Can't be invoked with an instance
 // Object / Factory / Constructor / Class
 // ==========================================================================================================
 
+// Note: *new*  is used by all except constructor function
+// Note: *this* is used by all except constructor function
+
 // ----------------------------------------------------
 // Object                                 - Without new
 // ----------------------------------------------------
-let MyObject = {
+let MyObject = new Object({
     key: 0,
     setter(key) { this.key = key; },
     getter() { console.log(this.key); }
-};
+});
 MyObject.setter(1);
 MyObject.getter();
 
