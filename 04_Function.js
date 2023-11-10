@@ -155,10 +155,10 @@ func(3, 1000, 10);
 // Spread and Rest Parameters
 // ==========================================================================================================
 
-func = (a, b, ...other) => { // var is used to redefine func later, not possible with let
+func = (a, b, ...other) => {    // Rest
     console.log(a);
     console.log(b);
-    console.log(other);         // Rest
+    console.log(other);
     console.log(...other);      // Spread
 };
 
@@ -211,7 +211,7 @@ multiplier = n_times(10, multiplier);
 multiplier(1, 2, 3);
 
 // ==========================================================================================================
-// Call vs Apply vs Spread
+// Call vs Apply vs Rest
 // ==========================================================================================================
 
 // - Call:
@@ -295,7 +295,10 @@ print_curry(1)(2)(3);
 // ----------------------------------------------------
 //  Partial Function
 // ----------------------------------------------------
-// Function(a,b,c) => Function(a, c)
+// Method-1
+let print_partial = curry(print_function)(1)(2);
+print_partial(3);
+// Method-2
 function print_partial(a, c) {
     return print_function(a, 2, c);
 }
