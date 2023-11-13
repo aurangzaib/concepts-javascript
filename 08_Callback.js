@@ -54,14 +54,17 @@ const handle_response = () => {
     // Promise
     const promise = send_request();
     // Promise Handling Functions
-    const resolve_function = (value) => { console.log("Success. Value: ", value); }
-    const reject_function = (value) => { console.log("Error. Value: ", value); }
-    const final_function = () => { console.log("Cleanup"); }
+    const resolve = (value) => {
+        console.log("Success. Value: ", value);
+    }
+    const reject = (value) => {
+        console.log("Error. Value: ", value);
+    }
+    const eventual = () => {
+        console.log("Cleanup");
+    }
     // Promise Handling
-    promise.then(resolve_function).catch(reject_function).finally(final_function);
-    // Ignored: Promise can be consumed only one
-    promise.then(resolve_function); // Only handle success
-    promise.catch(reject_function); // Only handle error
+    promise.then(resolve).catch(reject).finally(eventual);
 };
 
 // ----------------------------------------------------

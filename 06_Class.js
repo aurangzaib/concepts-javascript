@@ -104,10 +104,10 @@ console.log(Cls.static_method()); // CAN'T be invoked with an instance
 // Object / Factory / Constructor / Class
 // ==========================================================================================================
 
-// Note: *new* / *this* is used by all
+// Note: new/this is used by all
 
 // ----------------------------------------------------
-// Object                                 - Without new
+// Object
 // ----------------------------------------------------
 let MyObject = new Object({
     key: 0,
@@ -118,7 +118,7 @@ MyObject.setter(1);
 MyObject.getter();
 
 // ----------------------------------------------------
-// Factory Function         - Without new. Without this
+// Factory Function
 // ----------------------------------------------------
 function MyFactory(value) {
     return {
@@ -126,11 +126,11 @@ function MyFactory(value) {
         getter() { console.log(this.key); }
     }
 }
-let my_factory = MyFactory(11);
+let my_factory = new MyFactory(11);
 my_factory.getter();
 
 // ----------------------------------------------------
-// Constructor Function                      - With new
+// Constructor Function
 // ----------------------------------------------------
 function MyConstructor(key) {
     this.key = key;
@@ -140,7 +140,7 @@ let my_constructor = new MyConstructor(111);
 my_constructor.getter();
 
 // ----------------------------------------------------
-// Class                                     - With new
+// Class
 // ----------------------------------------------------
 class MyClass {
     constructor(key) { this.key = key; }
@@ -150,7 +150,7 @@ let my_class = new MyClass(1111);
 my_class.getter();
 
 // ==========================================================================================================
-// Lost *this* 
+// Pass class method always inside wrap - To avoid lost *this* 
 // ==========================================================================================================
 
 class Btn {

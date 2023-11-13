@@ -36,5 +36,5 @@ class Cls {
         console.log(get); return get;
     }
 }
-export { PI, Cls, func }
 
+export { PI, Cls, func }

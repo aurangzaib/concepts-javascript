@@ -24,10 +24,10 @@
 
 class BaseClass {
     constructor(value = 99) {
-        this.property = value;
+        this.property1 = value;
     }
     getter() {
-        return this.property;
+        return this.property1;
     }
 }
 
@@ -38,20 +38,20 @@ class BaseClass {
 class SubClassInheritance extends BaseClass {
     constructor(value1, value2) {   // Sub constructor
         super(value1);              // Base constructor
-        this.property_sub = value2;
+        this.property2 = value2;
     }
     getter() {
-        this.property += 1;
+        this.property1 += 1;
         return super.getter()       // Base method
     }
     getter_sub() {                  // Sub metho
-        return this.property_sub;
+        return this.property2;
     }
 }
 
-let sub_ins_inheritance = new SubClassInheritance(103, 203);
-console.log(sub_ins_inheritance.getter());
-console.log(sub_ins_inheritance.getter_sub());
+let ins_inheritance = new SubClassInheritance(103, 203);
+console.log(ins_inheritance.getter());
+console.log(ins_inheritance.getter_sub());
 
 // ==========================================================================================================
 // Composition (With Dependency Injection)
@@ -71,6 +71,6 @@ class SubClassComposition {
     }
 }
 
-let sub_ins_coposition = new SubClassComposition(new BaseClass(), 33);
-console.log(sub_ins_coposition.getter());
-console.log(sub_ins_coposition.getter_sub());
+let ins_composition = new SubClassComposition(new BaseClass(), 33);
+console.log(ins_composition.getter());
+console.log(ins_composition.getter_sub());
