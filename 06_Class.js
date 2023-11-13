@@ -50,10 +50,10 @@
 class Cls {
 
     // Default Constructor
-    public_property = 0;            // Private Property
-    #private_property = 0           // Protected Property
-    _protected_property = 0         // Public Property
-    static static_property = 0;     // Static Property
+    public_property = 0;            // Public
+    #private_property = 0           // Private
+    _protected_property = 0         // Protected
+    static static_property = 0;     // Static
 
     // Parameterized Constructor
     constructor(value = 0) {
@@ -68,23 +68,24 @@ class Cls {
         return this.#private_property;
     }
 
-    // Public Method (Static access with constructor)
+    // Public Method
     print() {
         console.log("Public: ", this.public_property);
         console.log("Private: ", this.#get_private_property());
         console.log("Protected: ", this._protected_property);
+        console.log("Static: ", this.constructor.static_property); // Access with constructor
     }
     access() {
         return {
             public: this.public_property,
             private: this.#private_property,
-            static: this.constructor.static_property
+            static: this.constructor.static_property // Access with constructor
         }
     }
 
-    // Static method (Static access without constructor)
+    // Static method
     static static_method() {
-        return this.static_property;
+        return this.static_property; // Access without constructor
     }
 }
 
@@ -97,14 +98,13 @@ console.log(ins instanceof Cls);
 console.log(Cls.prototype.isPrototypeOf(ins));
 
 console.log(ins.access());
-console.log(Cls.static_method()); // Can't be invoked with an instance
+console.log(Cls.static_method()); // CAN'T be invoked with an instance
 
 // ==========================================================================================================
 // Object / Factory / Constructor / Class
 // ==========================================================================================================
 
-// Note: *new*  is used by all except constructor function
-// Note: *this* is used by all except constructor function
+// Note: *new* / *this* is used by all
 
 // ----------------------------------------------------
 // Object                                 - Without new
@@ -120,10 +120,10 @@ MyObject.getter();
 // ----------------------------------------------------
 // Factory Function         - Without new. Without this
 // ----------------------------------------------------
-function MyFactory(key) {
+function MyFactory(value) {
     return {
-        key: key,
-        getter() { console.log(key); }
+        key: value,
+        getter() { console.log(this.key); }
     }
 }
 let my_factory = MyFactory(11);

@@ -16,11 +16,12 @@
 // ==========================================================================================================
 // Notes
 // ==========================================================================================================
+
 /*
 
-- Primtive Type: Number, Bool, Null
+- Primitive Type: Number, Bool, Null
 - Object Type: Object, Array, Function
-- In Javascript, int and float are same (Numbers)
+- int and float are same (Numbers)
 - Equality operators:
     ==  With implicit type conversion
     === Without implicit type conversion
@@ -32,7 +33,9 @@
 - Null:       Program level, intended absence of value
 - Date: 0 based months and 1 based days
 - Javascript has automatic garbage collection (https://javascript.info/garbage-collection)
-- Always use let/const instead of var (it creates a global variable)
+- Always use let/const instead of var
+- var creates a global variable
+
 */
 
 "use strict"

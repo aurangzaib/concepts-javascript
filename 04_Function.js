@@ -19,6 +19,7 @@
 // ==========================================================================================================
 
 // Using a variable before it is declared
+// Only when var is used, NOT with let/const
 // Only declaration is hoisted, not the initialization value
 func = () => {
     console.log(child_var); // Hoisted value
@@ -32,6 +33,7 @@ func();
 // Self Invocation Function
 // ==========================================================================================================
 
+// To avoid polluting global namespace
 const result = (() => {
     let a = 2, b = 3;
     return a + b;
@@ -118,10 +120,10 @@ objects.printer();
 // ----------------------------------------------------
 // Start After T seconds
 // ----------------------------------------------------
-var func = (a, b, t) => {
-    setTimeout(() => { console.log(a, b) }, t);
+var func = (a, t) => {
+    setTimeout(() => { console.log(a) }, t);
 }
-func(1, 2, 1000);
+func(1, 1000);
 
 // ----------------------------------------------------
 // End after T seconds
@@ -158,11 +160,15 @@ func(3, 1000, 10);
 func = (a, b, ...other) => {    // Rest
     console.log(a);
     console.log(b);
-    console.log(other);
+    console.log(other);         // Array
     console.log(...other);      // Spread
 };
 
 func(1, 2, 3, 4, 5, 6);
+
+let multiplier = (...args) => {
+    return args.reduce((a, b) => a * b);
+};
 
 // ==========================================================================================================
 // Recursion
@@ -173,10 +179,6 @@ func(1, 2, 3, 4, 5, 6);
 // ==========================================================================================================
 // Decorator
 // ==========================================================================================================
-
-let multiplier = (...args) => {
-    return args.reduce((a, b) => a * b);
-};
 
 // ----------------------------------------------------
 // Timer Decorator
@@ -203,7 +205,7 @@ const n_times = (n, func) => {
             console.log(`Output: ${data}`);
             // Stop the Interval
             counter += 1;
-            if (counter === n) { clearInterval(id); }
+            if (counter >= n) { clearInterval(id); }
         }, 1000);
     };
 };
