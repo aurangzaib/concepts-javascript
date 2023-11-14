@@ -166,5 +166,19 @@ setTimeout(() => btn.getter(), 1000);   // Correct this
 setTimeout(btn.getter2, 1000);          // Correct this
 
 // ==========================================================================================================
-// Mixins
+// Singleton
 // ==========================================================================================================
+
+// A class which allows only one frozen instance
+let instance;
+class Singleton {
+    constructor(counter) {
+        if (instance) { throw new Error("Only one instance allowed");}
+        this.counter = counter;
+        instance = this;
+    }
+    get() { return this.counter }
+    set(value) { this.counter = value; }
+};
+const ins1 = Object.freeze(new Singleton(123));       // Allowed
+const ins2 = new Singleton(22);                       // Error

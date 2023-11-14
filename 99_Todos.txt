@@ -1,11 +1,6 @@
 [+] Destructuring (https://javascript.info/destructuring-assignment)
-[+] Promises, async/await (https://javascript.info/async)
 [+] Mixins (https://javascript.info/mixins)
-[+] Partial Function 
-[+] Currying
 
 [+] Call AutoHero
-[+] Homeoffice Setup
 [+] Kuku Bank Account Research
 [+] Kuku iPhone
-[+] Family Outing
