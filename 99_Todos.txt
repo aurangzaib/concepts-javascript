@@ -1,6 +1,2 @@
 [+] Destructuring (https://javascript.info/destructuring-assignment)
 [+] Mixins (https://javascript.info/mixins)
-
-[+] Call AutoHero
-[+] Kuku Bank Account Research
-[+] Kuku iPhone
